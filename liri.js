@@ -30,12 +30,14 @@ client.get('statuses/user_timeline', params, function(error, tweets, response) {
 	}
   }
 }); 
-} else if (process.argv[2] === 'spotify-this-song'){
-// End Twitter call
+} 
+
+else if (process.argv[2] === 'spotify-this-song'){
 var song = process.argv[3]
 if(song === undefined){
 	song = "All the small things"
 }
+
 
 // Variable to call on the instance of spotify
 var spotify = new Spotify({
