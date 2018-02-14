@@ -7,3 +7,13 @@ LIRI executes four commands:
 	2) spotify-this-song
 	3) movie-this
 	4) do-what-it-says 
+
+
+LINKS
+	Before calling on the four commands need to set up NPM links and calls to other folders. 
+
+
+MY-TWEETS: 
+	* Uses Twitter NPM to pull tweet history. Set parameters to call only last 20 tweets with dates tweets were sent. 
+
+SPOTIFY-THIS-SONG
