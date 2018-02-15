@@ -8,6 +8,39 @@ var keys = require('./keys.js');
 // console.log(keys)
 // console.log(keys.consumer_key)
 
+// Function and console logs to capture user input
+console.log("Type 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says' to perform your search!");
+// choses actions (process.argv[2]) and the search parameter called (process[3])
+var firstCommand = process.argv[2];
+var secondCommand = process.argv[3];
+	// for loop in case user types in multiple commands
+	for(i = 4; i < process.argv.length; i++) {
+		secondCommand += "+" + process.argv[i];
+	}
+
+// Switch function to tell which action needs to be called
+	function theSwitch() {
+		switch(firstCommand) {
+			case 'my-tweets':
+			getTweets();
+			break;
+
+			case 'spotify-this-song':
+			mySpotify();
+			break;
+
+			case 'movie-this':
+			myMovie();
+			break;
+
+			case 'do-what-it-says':
+			newSpotify()
+			break;
+		}
+	};
+
+
+
 // Variable to call the instance of twitter and to call to node modules and to keys.js to protect info.
 var client = new Twitter({
 			consumer_key: keys.twitterKeys.consumer_key,
