@@ -9,7 +9,7 @@ var keys = require('./keys.js');
 // console.log(keys.consumer_key)
 
 // Function and console logs to capture user input
-console.log("Type 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says' to perform your search!");
+// console.log("Type 'my-tweets', 'spotify-this-song', 'movie-this', or 'do-what-it-says' to perform your search!");
 // choses actions (process.argv[2]) and the search parameter called (process[3])
 var firstCommand = process.argv[2];
 var secondCommand = process.argv[3];
@@ -89,10 +89,12 @@ function mySpotify() {
 	var searchMusic;
 		if(secondCommand === undefined) {
 			searchMusic = "I Want it That Way";
-		}
+		} else {
+			searchMusic = secondCommand;
+		};
 
 	 // starts the spotify search
-	spotify.search({ type: 'track', query: song }, function(err, data) {
+	spotify.search({ type: 'track', query: searchMusic }, function(err, data) {
 	  if (err) {
 	    return console.log('Error occurred: ' + err);
 	  }
@@ -103,3 +105,32 @@ function mySpotify() {
 		console.log(song)
 	});
 }
+
+
+
+function myMovie() {
+
+	var searchMovie;
+	if(secondCommand === undefined) {
+		searchMovie = "Mr. Nobody";
+	} else {
+		searchMovie = secondCommand;
+	};
+
+	var queryUrl = "http://www.omdbapi.com/?t=" + searchMovie + "&y=&plot=short&apikey=40e9cece"; 
+	request(queryUrl, function(error, response, body) {
+		if(!error && response.statusCode === 200){
+			console.log("Title: " + JSON.parse(body)["Title"]);
+			console.log("Year: " + JSON.parse(body)["Year"]);
+			console.log("IMDB Rating: " + JSON.parse(body)["imdbRating"]);
+			console.log("Country: " + JSON.parse(body)["Country"]);
+	        console.log("Language: " + JSON.parse(body)["Language"]);
+	        console.log("Plot: " + JSON.parse(body)["Plot"]);
+	        console.log("Actors: " + JSON.parse(body)["Actors"]);
+	        console.log("Rotten Tomatoes Rating: " + JSON.parse(body)["tomatoRating"]);
+		}
+	});
+
+}; /// end of myMovie function
+
+theSwitch(); 
