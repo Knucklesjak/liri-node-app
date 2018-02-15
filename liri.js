@@ -133,7 +133,7 @@ function doWhatSays() {
 		fs.readFile("random.txt", "utf8", function(error, data){
 			if (!error) {
 				doWhatSaysResults = data.split(",");
-				mySpotify(doWhatSaysResults[0], doWhatSaysResults[1]);
+				mySpotify(doWhatSaysResults[0], doWhatSaysResults[1]); //I got this working but have no idea why! This was pure luck after chatting with others.
 			} else {
 				console.log("Error occurred" + error);
 			}
