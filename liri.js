@@ -33,9 +33,9 @@ var secondCommand = process.argv[3];
 			myMovie();
 			break;
 
-			case 'do-what-it-says':
-			newSpotify()
-			break;
+			// case 'do-what-it-says':
+			// newSpotify()
+			// break;
 		}
 	};
 
@@ -69,13 +69,6 @@ function getTweets(){
 
 
 
-// else if (process.argv[2] === 'spotify-this-song'){
-// var song = process.argv[3]
-// if(song === undefined){
-// 	song = "All the small things"
-// }
-
-
 // Function for spotify
 function mySpotify() {
 	console.log("Check out this song!");
@@ -86,6 +79,7 @@ function mySpotify() {
 	  secret: keys.spotifyKeys.client_secret
 	});
 
+	// calls for default song if song not found
 	var searchMusic;
 		if(secondCommand === undefined) {
 			searchMusic = "I Want it That Way";
@@ -99,15 +93,15 @@ function mySpotify() {
 	    return console.log('Error occurred: ' + err);
 	  }
 		
-		console.log(data.tracks.items[0].album.name) //album name
-		console.log(data.tracks.items[0].album.artists[0].name)
-		console.log(data.tracks.items[0].album.href)
-		console.log(song)
+		console.log("Album Name: " + data.tracks.items[0].album.name) //album name
+		console.log("Artist Name: " + data.tracks.items[0].album.artists[0].name) // artist
+		console.log("URL Link: " + data.tracks.items[0].album.href) //web link
+		console.log("Song Name: " + searchMusic) //song
 	});
 }
 
 
-
+// function for calling the movie
 function myMovie() {
 
 	var searchMovie;
@@ -133,4 +127,5 @@ function myMovie() {
 
 }; /// end of myMovie function
 
+// calls all functions to run. 
 theSwitch(); 
