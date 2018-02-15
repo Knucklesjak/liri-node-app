@@ -33,9 +33,9 @@ var secondCommand = process.argv[3];
 			myMovie();
 			break;
 
-			// case 'do-what-it-says':
-			// newSpotify()
-			// break;
+			case 'do-what-it-says':
+			doWhatSays()
+			break;
 		}
 	};
 
@@ -126,6 +126,32 @@ function myMovie() {
 	});
 
 }; /// end of myMovie function
+
+
+// Do What it Says function to cal from random.txt file. 
+function doWhatSays() {
+		fs.readFile("random.txt", "utf8", function(error, data){
+			if (!error) {
+				doWhatSaysResults = data.split(",");
+				mySpotify(doWhatSaysResults[0], doWhatSaysResults[1]);
+			} else {
+				console.log("Error occurred" + error);
+			}
+		});
+	};
+	// 
+	function log(logResults) {
+	  fs.appendFile("log.txt", logResults, (error) => {
+	    if(error) {
+	      throw error;
+	    }
+	  });
+	}
+
+
+
+
+
 
 // calls all functions to run. 
 theSwitch(); 
